@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+  <html lang="en-US">
+    <head>
+      <meta charset="utf-8">
+      <title>Polls test by bincom</title>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatigin>
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="../static/styles/polls.css?{{cache_id}}">
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script src="../static/scripts/polls.js?{{cache_id}}"></script>
+    </head>
+    <body>
+      <section>
+        <div class="polls">
+          <h2>Results by poll unit</h2>
+          <p>Choose any polling unit from the drop down list to see their poll result</p>
+          <select name="poll_units" class="poll_units">
+            {% for poll_unit in poll_units %}
+	      <option id={{poll_unit.id}} value={{poll_unit.name}}>{{poll_unit.name}}</option>
+	    {% endfor %}
+          </select>
+        </div>
+        <div class="lgas">
+          <h2>Results by LGA</h2>
+          <p>Choose any LGA from the drop down list to see their poll result</p>
+          <select name="lga_units" class="lga_units">
+            {% for lga in lgas %}
+	      <option id={{lga.id}} value={{lga.name}}>{{lga.name}}</option>
+	    {% endfor %}
+          </select>
+        </div>
+	<div class="post-form">
+          <h2>Post a result</h2>
+          <form>
+	    <h3>&nbsp;</h3>
+	    <label for="name">Agent Name:</label><br>
+	    <input type="text" id="name" name="name"><br>
+	    <label for="unit_id">Polling unit Id:</label><br>
+	    <input type="number" id="unit_id" name="unit_id"><br>
+	    <h4>Party scores</h4>
+	    <label for="PDP">PDP: </label>
+	    <input type="number" id="PDP" name="PDP"><br>
+	    <label for="DPP">DPP: </label>
+	    <input type="number" id="DPP" name="DPP"><br>
+	    <label for="ACN">ACN: </label>
+	    <input type="number" id="ACN" name="ACN"><br>
+	    <label for="PPA">PPA: </label>
+	    <input type="number" id="PPA" name="PPA"><br>
+	    <label for="CDC">CDC:</label>
+	    <input type="number" id="CDC" name="CDC"><br>
+	    <label for="JP">JP:</label>
+	    <input type="number" id="JP" name="JP"><br>
+	    <label for="ANPP">ANPP:</label>
+	    <input type="number" id="ANPP" name="ANPP"><br>
+	    <label for="LABO">LABO:</label>
+	    <input type="number" id="LABO" name="LABO"><br>
+	    <label for="CPP">CPP:</label>
+	    <input type="number" id="CPP" name="CPP"><br>
+	    <input type="submit" value="Submit">
+          </form>
+	</div>
+      </section>
+    </body>
+  </html>
