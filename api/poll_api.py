@@ -10,13 +10,13 @@ app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
 conn = mysql.connector.connect(
         host="localhost",
-        user="user",
-        password="password",
+        user="micoliser",
+        password="passowrd",
         database="bincomphptest")
 curr = conn.cursor()
 
 
-@app.route("/parties", strict_slashes=False)
+@app.route("/api/parties", strict_slashes=False)
 def parties():
     """ fetches all party names """
 
@@ -29,7 +29,7 @@ def parties():
     return jsonify(party_names)
 
 
-@app.route("/results/pu/<pu_id>", strict_slashes=False)
+@app.route("/api/results/pu/<pu_id>", strict_slashes=False)
 def pu_result(pu_id):
     """ fetches the result for an individual polling unit """
 
@@ -46,7 +46,7 @@ def pu_result(pu_id):
     return jsonify({unit_name: results})
 
 
-@app.route("/results/lga/<lga_id>", strict_slashes=False)
+@app.route("/api/results/lga/<lga_id>", strict_slashes=False)
 def lga_result(lga_id):
     """ fetches the result for an individual lga """
 
@@ -61,7 +61,7 @@ def lga_result(lga_id):
     # get the summed results using the pollling unit ids
     res = {}
     for id in pu_ids:
-        response = requests.get(request.host_url.rstrip('/') + url_for('pu_result', pu_id=id))
+        response = requests.get('http://web-01.samueliwelumo.tech' + url_for('pu_result', pu_id=id))
         for name, result in response.json().items():
             res[name] = result
 
@@ -78,7 +78,7 @@ def lga_result(lga_id):
     return jsonify(res)
 
 
-@app.route("/results/pu/", methods=["POST"], strict_slashes=False)
+@app.route("/api/results/pu/", methods=["POST"], strict_slashes=False)
 def post_pu_result():
     """ post a result to a new polling unit """
 

@@ -7,13 +7,13 @@ import uuid
 app = Flask(__name__)
 conn = mysql.connector.connect(
         host="localhost",
-        user="user",
-        password="password",
+        user="micoliser",
+        password="passwrd",
         database="bincomphptest")
 curr = conn.cursor()
 
 
-@app.route("/polls", strict_slashes=False)
+@app.route("/web/polls", strict_slashes=False)
 def polls():
     """ creates the route for the poll """
 
@@ -30,4 +30,4 @@ def polls():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=3000)
+    app.run(host="0.0.0.0")
