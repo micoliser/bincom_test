@@ -36,8 +36,12 @@
 	    <h3>&nbsp;</h3>
 	    <label for="name">Agent Name:</label><br>
 	    <input type="text" id="name" name="name"><br>
-	    <label for="unit_id">Polling unit Id:</label><br>
-	    <input type="number" id="unit_id" name="unit_id"><br>
+	    <h4>Select polling unit</h4>
+            <select>
+            {% for poll_unit in poll_units %}
+	      <option id={{poll_unit.id}} value={{poll_unit.name}}>{{poll_unit.name}}</option>
+	    {% endfor %}
+            </select>
 	    <h4>Party scores</h4>
 	    <label for="PDP">PDP: </label>
 	    <input type="number" id="PDP" name="PDP"><br>
