@@ -115,8 +115,6 @@ def post_pu_result():
     del post_data["username"]
     del post_data["pu_id"]
 
-    print(post_data)
-
     for party, score in post_data.items():
         curr.execute("SELECT * FROM announced_pu_results WHERE polling_unit_uniqueid={} and party_abbreviation='{}'".format(pu_id, party))
         if not curr.fetchall():
